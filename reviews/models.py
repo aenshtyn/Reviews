@@ -24,6 +24,7 @@ class language(models.Model):
 
 class Project (models.Model):
     name = models.CharField(max_length =30)
+    description = models.TextField ()
     language = models.ManyToManyField(language)
     author = models.ForeignKey(Author)
     pub_date = models.DateTimeField(auto_now_add=True)

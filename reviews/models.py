@@ -16,7 +16,7 @@ class Author(models.Model):
         self.save()
 
 
-class languages(models.Model):
+class language(models.Model):
     name = models.CharField(max_length =30)
 
     def __str__(self):
@@ -24,7 +24,7 @@ class languages(models.Model):
 
 class Project (models.Model):
     name = models.CharField(max_length =30)
-    languages = models.ManyToManyField(languages)
+    language = models.ManyToManyField(language)
     author = models.ForeignKey(Author)
     pub_date = models.DateTimeField(auto_now_add=True)
 

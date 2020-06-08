@@ -41,6 +41,11 @@ class Project (models.Model):
         projects = cls.objects.filter(pub_date__date = today)
         return projects
 
+    @classmethod
+    def search_by_name(cls,search_term):
+        projects = cls.objects.filter(name__icontains=search_term)
+        return projects
+
     class Meta:
         ordering = ['name']
 

@@ -8,6 +8,19 @@ class Author(models.Model):
 
     def __str__(self):
         return self.first_name
+    
+    class Meta:
+        ordering = ['first_name']
+
+    def save_author(self):
+        self.save()
+
+
+class languages(models.Model):
+    name = models.CharField(max_length =30)
+
+    def __str__(self):
+        return self.name
 
 class Project (models.Model):
     name = models.CharField(max_length =30)
@@ -21,8 +34,5 @@ class Project (models.Model):
     class Meta:
         ordering = ['name']
 
-class languages(models.Model):
-    name = models.CharField(max_length =30)
-
-    def __str__(self):
-        return self.name
+    def save_project(self):
+        self.save()

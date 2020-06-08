@@ -21,3 +21,10 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'reviews/search.html',{"message":message})
+
+def project(request,project_id):
+    try:
+        project = Project.objects.get(id = project_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"reviews/project.html", {"project":project})

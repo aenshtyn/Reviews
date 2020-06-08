@@ -12,3 +12,9 @@ class Project (models.Model):
 
     class Meta:
         ordering = ['first_name']
+
+class languages(models.Model):
+    name = models.CharField(max_length =30)
+
+    def __str__(self):
+        return self.name

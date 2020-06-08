@@ -3,7 +3,37 @@
 {% block content %}
 {{block.super}}
 
+<div class="container">
+
 <h1> Welcome Home</h1>
+
+</div>
+
+  <!-- Looping through projects   -->
+  {% for projects_item in projects %}
+
+  <div class="row">
+    <!-- displaying projects -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <h2 class="text-center"> {{ projects_item.name }} </h2>
+      <hr/>
+      <p class="text-center" >{{ projects_item.language }}</p>
+      <hr/>
+      <p class="text-center" >{{ projects_item.description }}</p>
+      <hr/>
+      <p class="text-center" >{{ projects_item.author }}</p>
+    </div>
+      </div>
+
+  {% empty %}
+  <div class="row">
+    <h2 class="text-center">There are no Projects Submitted</h2>
+  </div>
+  {% endfor %}
+
+</div>
+
+
 
 {% endblock %}
 

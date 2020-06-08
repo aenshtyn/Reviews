@@ -1,4 +1,5 @@
 from django.db import models
+import datetime as dt
 
 # Create your models here.
 class Author(models.Model):
@@ -31,6 +32,14 @@ class Project (models.Model):
 
     def __str__(self):
         return self.name
+
+
+    
+    @classmethod
+    def all_projects(cls):
+        today = dt.date.today()
+        projects = cls.objects.filter(pub_date__date = today)
+        return projects
 
     class Meta:
         ordering = ['name']

@@ -7,7 +7,7 @@
 
 <div class="container">
 
-    <h1> Welcome Home</h1>
+    <h1 > Some of my projects </h1>
 
 
 
@@ -15,24 +15,28 @@
 {% for projects_item in projects %}
 
 <div class="row">
-    <!-- displaying projects -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <h2 class="text-center"> {{ projects_item.name }} </h2>
-        <hr />
-        <p class="text-center">{{ projects_item.language }}</p>
-        <hr />
-        <p class="text-center">{{ projects_item.description }}</p>
-        <hr />
-        <p class="text-center">{{ projects_item.author }}</p>
-    </div>
 
-    <!--Display news project images  -->
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <img src="{{projects_item.project_image.url}}" class="img-responsive" alt="Image">
+        
     </div>
 
 
 </div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+        <img src="{{projects_item.project_image.url}}" class="img-responsive" alt="Image">
+      <div class="card-body">
+          
+          <hr/>
+        <h5 class="card-title">{{ projects_item.name }}</h5>
+        <p class="card-text">{{ projects_item.description }}</p>
+        <a href="{{ project_item.link }}" target = "blank" class="btn btn-primary"> Open Site </a>
+      </div>
+    </div>
+  </div>
+
 
 {% empty %}
 <div class="row">
@@ -41,25 +45,12 @@
 {% endfor %}
 
 
-<!-- Looping through news end   -->
 
-<div class="container-fluid">
-
-    <form action="{%url 'index'%}" method="post">
-        {%csrf_token%}
-
-        {% bootstrap_form letterForm layout='inline' %}
-        <input type="submit" value="Subscribe">
-    </form>
-
-</div>
-</div>
-</div>
 
 
 {% endblock %}
 
-<!--End of the block content-->
+
 {% block scripts %} 
 
 {{block.super}}

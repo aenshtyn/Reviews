@@ -16,12 +16,12 @@ This is a django application that will allow a user to post a project he/she has
 
 ## User Story
 
-* Sign in to the application to start using.
-* Upload pictures to the application.
-* See profile with all pictures.
-* Follow other users and see their pictures on timeline.
-* Like a picture and leave a comment on it.
-
+* A user can view posted projects and their details.
+* A user can post a project to be rated/reviewed.
+* A user can rate/ review other users' projects.
+* Search for projects.
+* View projects overall score.
+* A user can view their profile page.
 
 ## Setup and Installation  
 To get the project .......  

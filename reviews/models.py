@@ -52,3 +52,8 @@ class Project (models.Model):
 
     def save_project(self):
         self.save()
+
+
+class ProjectUpdateRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()

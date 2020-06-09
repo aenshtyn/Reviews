@@ -13,7 +13,11 @@
 
     {% block styles %}
     {% bootstrap_css %}
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/lux/bootstrap.min.css">
      <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
   {% endblock %}
 
 
@@ -28,6 +32,7 @@
 
     {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
      {% bootstrap_javascript %}
       {% endblock %}
 

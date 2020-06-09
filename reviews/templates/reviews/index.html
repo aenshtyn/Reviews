@@ -1,5 +1,6 @@
 {%extends 'base.html'%}
-{% load bootstrap3 %}s
+{% load bootstrap3 %}
+{% load static%}
 
 {% block content %}
 {{block.super}}
@@ -57,6 +58,14 @@
 
 
 {% endblock %}
-{% block scripts %} {{block.super}}
-  <script type="text/javascript" src="{%static 'js/newsletter.js'%}"></script>
+
+<!--End of the block content-->
+{% block scripts %} 
+
+{{block.super}}
+
+<script type="text/javascript" src="{% static 'js/projectupdates.js' %}"></script>
+
+
+
 {% endblock %}

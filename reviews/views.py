@@ -63,3 +63,14 @@ def new_project(request):
     else:
         form = NewProjectForm()
     return render(request, 'new_project.html', {"form": form})
+
+
+def projectupdate(request):
+    name = request.POST.get('your_name')
+    email = request.POST.get('email')
+
+    recipient = ProjectUpdateRecipients(name=name, email=email)
+    recipient.save()
+    send_welcome_email(name, email)
+    data = {'success': 'You have been successfully added to mailing list'}
+    return JsonResponse(data)

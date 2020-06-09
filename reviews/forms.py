@@ -12,3 +12,4 @@ class NewProjectForm(forms.ModelForm):
         widgets = {
             'language': forms.CheckboxSelectMultiple(),
         }
+

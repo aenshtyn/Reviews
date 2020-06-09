@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 import datetime as dt
 from .models import Project, ProjectUpdateRecipients
-from .forms import ProjectUpdatesForm
+from .forms import ProjectUpdatesForm, NewProjectForm
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
 
@@ -48,3 +48,18 @@ def project(request,project_id):
 
 
     return render(request,"reviews/project.html", {"project":project})
+
+@login_required(login_url='/accounts/login/')
+def new_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.author = current_user
+            project.save()
+        return redirect('NewsToday')
+
+    else:
+        form = NewProjectForm()
+    return render(request, 'new_project.html', {"form": form})

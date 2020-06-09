@@ -15,7 +15,12 @@
    <div class="row">
      <p>{{project.description}}</p>
    </div>
+   <div class="row">
+     {% autoescape on %}
+     {{project.post| safe}}
+    {% endautoescape %}
 
+   </div>
    <div class="row">
      <p>Posted {{project.pub_date|timesince}} ago by {{project.author.first_name}}</p>
    </div>

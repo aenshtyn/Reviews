@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+   <div class="row">
+     <img src="{{project.project_image.url}}"  class="img-responsive" alt="">
+   </div>
+
+   <div class="row">
+     <h1 class="text-center">{{project.name}}</h1>
+   </div>
+
+   <div class="row">
+     <p>{{project.description}}</p>
+   </div>
+   <div class="row">
+     {% autoescape on %}
+     {{project.post| safe}}
+    {% endautoescape %}
+
+   </div>
+   <div class="row">
+     <p>Posted {{project.pub_date|timesince}} ago by {{project.author.first_name}}</p>
+   </div>
+
+ </div>
+
+ {% endblock %}

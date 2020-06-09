@@ -1,5 +1,7 @@
 from django.db import models
 import datetime as dt
+from tinymce.models import HTMLField
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Author(models.Model):
@@ -27,7 +29,7 @@ class Project (models.Model):
     name = models.CharField(max_length =30)
     description = models.TextField ()
     language = models.ManyToManyField(language)
-    author = models.ForeignKey(Author)
+    author = models.ForeignKey(User,on_delete=models.CASCADE) 
     pub_date = models.DateTimeField(auto_now_add=True)
     project_image = models.ImageField(upload_to = 'projects/', blank=True)
 
@@ -52,3 +54,8 @@ class Project (models.Model):
 
     def save_project(self):
         self.save()
+
+
+class ProjectUpdateRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()

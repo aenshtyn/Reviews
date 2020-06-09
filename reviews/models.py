@@ -1,4 +1,5 @@
 from django.db import models
+import datetime as dt
 
 # Create your models here.
 class Author(models.Model):
@@ -28,9 +29,23 @@ class Project (models.Model):
     language = models.ManyToManyField(language)
     author = models.ForeignKey(Author)
     pub_date = models.DateTimeField(auto_now_add=True)
+    project_image = models.ImageField(upload_to = 'projects/', blank=True)
 
     def __str__(self):
         return self.name
+
+
+    
+    @classmethod
+    def all_projects(cls):
+        today = dt.date.today()
+        projects = cls.objects.filter(pub_date__date = today)
+        return projects
+
+    @classmethod
+    def search_by_name(cls,search_term):
+        projects = cls.objects.filter(name__icontains=search_term)
+        return projects
 
     class Meta:
         ordering = ['name']

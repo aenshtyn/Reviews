@@ -1,8 +1,41 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http  import HttpResponse,  Http404
+import datetime as dt
+from .models import Project
+from .forms import ProjectUpdatesForm
 
 # Create your views here.
-from django.http  import HttpResponse
+def index(request):
+    date = dt.date.today()
+    projects = Project.all_projects()
 
-# Create your views here.
-def welcome(request):
-    return render (request, 'reviews/index.html')
+    if request.method == 'POST':
+        form = ProjectUpdatesForm(request.POST)
+        if form.is_valid():
+            print('valid')
+    else:
+        form = ProjectUpdatesForm()
+    return render(request, 'reviews/index.html', {"date" : date, "projects": projects, "letterForm":form })
+
+def search_results(request):
+
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_projects = Project.search_by_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'reviews/search.html',{"message":message,"projects": searched_projects})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'reviews/search.html',{"message":message})
+
+def project(request,project_id):
+    try:
+        project = Project.objects.get(id = project_id)
+    except DoesNotExist:
+        raise Http404()
+
+
+
+    return render(request,"reviews/project.html", {"project":project})

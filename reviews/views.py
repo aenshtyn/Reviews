@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 import datetime as dt
 from .models import Project, ProjectUpdateRecipients
 from .forms import ProjectUpdatesForm
+from .email import send_welcome_email
 
 # Create your views here.
 def index(request):
@@ -16,6 +17,8 @@ def index(request):
             email = form.cleaned_data['email']
             recipient = ProjectUpdateRecipients(name = name,email =email)
             recipient.save()
+            send_welcome_email(name,email)
+            
             HttpResponseRedirect('index')
     else:
         form = ProjectUpdatesForm()

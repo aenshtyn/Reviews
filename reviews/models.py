@@ -29,7 +29,7 @@ class Project (models.Model):
     language = models.ManyToManyField(language)
     author = models.ForeignKey(Author)
     pub_date = models.DateTimeField(auto_now_add=True)
-    project_image = models.ImageField(upload_to = 'projects/')
+    project_image = models.ImageField(upload_to = 'projects/', blank=True)
 
     def __str__(self):
         return self.name

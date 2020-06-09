@@ -2,12 +2,20 @@ from django.shortcuts import render, redirect
 from django.http  import HttpResponse,  Http404
 import datetime as dt
 from .models import Project
+from .forms import ProjectUpdatesForm
 
 # Create your views here.
 def index(request):
     date = dt.date.today()
     projects = Project.all_projects()
-    return render(request, 'reviews/index.html', {"date" : date, "projects": projects })
+
+    if request.method == 'POST':
+        form = ProjectUpdatesForm(request.POST)
+        if form.is_valid():
+            print('valid')
+    else:
+        form = ProjectUpdatesForm()
+    return render(request, 'reviews/index.html', {"date" : date, "projects": projects, "letterForm":form })
 
 def search_results(request):
 
@@ -27,4 +35,7 @@ def project(request,project_id):
         project = Project.objects.get(id = project_id)
     except DoesNotExist:
         raise Http404()
+
+
+
     return render(request,"reviews/project.html", {"project":project})

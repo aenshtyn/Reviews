@@ -4,6 +4,7 @@ import datetime as dt
 from .models import Project, ProjectUpdateRecipients
 from .forms import ProjectUpdatesForm
 from .email import send_welcome_email
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -18,7 +19,7 @@ def index(request):
             recipient = ProjectUpdateRecipients(name = name,email =email)
             recipient.save()
             send_welcome_email(name,email)
-            
+
             HttpResponseRedirect('index')
     else:
         form = ProjectUpdatesForm()
@@ -37,6 +38,7 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'reviews/search.html',{"message":message})
 
+@login_required(login_url='/accounts/login/')
 def project(request,project_id):
     try:
         project = Project.objects.get(id = project_id)

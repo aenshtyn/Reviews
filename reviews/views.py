@@ -5,6 +5,8 @@ from .models import Project, ProjectUpdateRecipients
 from .forms import ProjectUpdatesForm, NewProjectForm
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+
 
 # Create your views here.
 def index(request):
@@ -58,11 +60,11 @@ def new_project(request):
             project = form.save(commit=False)
             project.author = current_user
             project.save()
-        return redirect('NewsToday')
+        return redirect('index')
 
     else:
         form = NewProjectForm()
-    return render(request, 'new_project.html', {"form": form})
+    return render(request, 'reviews/new_project.html', {"form": form})
 
 
 def projectupdate(request):

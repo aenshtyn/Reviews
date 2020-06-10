@@ -13,6 +13,9 @@
 
 This is a django application that will allow a user to post a project he/she has created and get it reviewed by his/her peers.
 
+## API test
+
+http://127.0.0.1:8000/api/project/project-id/1/
 
 ## User Story
 
@@ -77,7 +80,9 @@ Open the application on your browser `127.0.0.1:8000`.
 * Django
 
 ## Known Bugs  
-* Still working on the App... Still has some bugs to be cleared
+* 405 error on the api requests.
+* Navbar has some issues with placement
+* 
 
 ## Support and contact details
 

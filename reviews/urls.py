@@ -9,6 +9,8 @@ urlpatterns=[
     url(r'^project/(\d+)',views.project,name ='project'),
     url(r'^new/project$', views.new_project, name='new-project'),
     url(r'^ajax/projectupdate/$', views.projectupdate, name='projectupdate'),
+    url(r'^api/projects/$', views.ProjectList.as_view())
+     url(r'api/project/project-id/(?P<pk>[0-9]+)/$',views.ProjectDescription.as_view())
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

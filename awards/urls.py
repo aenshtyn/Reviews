@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'',include('reviews.urls')),
     url(r'^logout/$', views.logout, {"next_page": '/'}),
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^api-token-auth/', obtain_auth_token)
 ]

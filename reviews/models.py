@@ -33,7 +33,7 @@ class Project (models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     project_image = models.ImageField(upload_to = 'projects/', blank=True)
     link = models.URLField(blank=True)
-    post = models.TextField()
+    post = models.TextField(blank=True)
 
     def __str__(self):
         return self.name

@@ -13,10 +13,10 @@
 
 This is a django application that will allow a user to post a project he/she has created and get it reviewed by his/her peers.
 
-## API test
+## API Links
 
-[All Projects](https://mohasreviews.herokuapp.com/api/projects/)
-[Individual Project](https://mohasreviews.herokuapp.com/api/project/project-id/1/)
+* [All Projects](https://mohasreviews.herokuapp.com/api/projects/)
+* [Individual Project](https://mohasreviews.herokuapp.com/api/project/project-id/1/)
 
 ## User Story
 

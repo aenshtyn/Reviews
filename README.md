@@ -15,7 +15,8 @@ This is a django application that will allow a user to post a project he/she has
 
 ## API test
 
-http://127.0.0.1:8000/api/project/project-id/1/
+[All Projects](https://mohasreviews.herokuapp.com/api/projects/)
+[Individual Project](https://mohasreviews.herokuapp.com/api/project/project-id/1/)
 
 ## User Story
 
